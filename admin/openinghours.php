@@ -23,6 +23,8 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+
+    
 <style>
 
 th{
@@ -80,7 +82,7 @@ box-shadow:10px 10px 0px 0px black;
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon ">
                 <img src="https://toppng.com//public/uploads/preview/health-plan-icon-hospital-icon-blue-11553476430fckf2owtwt.png" width="45px" style="border-radius: 60%;">
                 </div>
@@ -423,7 +425,10 @@ box-shadow:10px 10px 0px 0px black;
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-<div class="container" style="text-align:center;">
+
+
+                       
+                <div class="container" style="text-align:center;">
     <div class="box">
 
 <img src="https://us.123rf.com/450wm/jasmin64/jasmin642211/jasmin64221100275/194879060-hospital-medical-center-clinic-icon-isolated-on-white-background.jpg?ver=6" alt="hospital image" width="200px" style="border-radius:50%;">
@@ -438,8 +443,8 @@ box-shadow:10px 10px 0px 0px black;
                        
                             
                           
- <table border="1px" width="70%">
-<tr>
+                        <table border="1px" width="70%">
+                            <tr>
 
 
 <th>Serial No</th>
@@ -447,7 +452,7 @@ box-shadow:10px 10px 0px 0px black;
 <th>Fetch Data</th>
 
 
-</tr>
+                            </tr>
 
 
 
@@ -455,13 +460,21 @@ box-shadow:10px 10px 0px 0px black;
 
 
 <td>1</td>
-<td><a href="sliderform.php"><button class="good">Create New</button></a></td>
-<td><a href="sliderfetch.php"><button class="good">Fetch Data</button></a></td>
+<td><a href="openingform.php"><button class="good">Create New</button></a></td>
+<td><a href="openingfetch.php"><button class="good">Fetch Data</button></a></td>
 </tr>
 
 
 
                         </table>           
+
+
+
+
+               
+                          
+                                   
+
 
 
 

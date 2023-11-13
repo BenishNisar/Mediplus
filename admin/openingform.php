@@ -22,52 +22,109 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-<style>
-
-th{
-    text-align:center;
-    background-color:red;
-    color:white;
-}
-
-
-
-td{
-    text-align:center;
-}
-table{
-    background-color:blue;
-    border:1px solid white;
-    height:180px;
-    margin-left:180px;
-    margin-top:10px;
-    color:white;
-}
-
-
-.good{
-height:40px;
-width:140px;
-border:1px solid white;
-background-color:blue;
-color:white;
-font-family:bold;
-border-radius:10%;
-box-shadow:10px 10px 0px 0px black;
-
-}
-.good:hover{
-    background-color:skyblue;
-    color:white;
-    
-
-}
-</style>
-
     
      
     
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#712cf9">
+
+
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+  .b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+  }
+
+  .b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+  }
+
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
+
+  .nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+  }
+
+  .nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .btn-bd-primary {
+    --bd-violet-bg: #712cf9;
+    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #6528e0;
+    --bs-btn-hover-border-color: #6528e0;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #5a23c8;
+    --bs-btn-active-border-color: #5a23c8;
+  }
+
+  .bd-mode-toggle {
+    z-index: 1500;
+  }
+
+  .bd-mode-toggle .dropdown-menu .active .bi {
+    display: block !important;
+  }
+</style>
+
+
 
 </head>
 
@@ -423,45 +480,111 @@ box-shadow:10px 10px 0px 0px black;
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-<div class="container" style="text-align:center;">
-    <div class="box">
 
-<img src="https://us.123rf.com/450wm/jasmin64/jasmin642211/jasmin64221100275/194879060-hospital-medical-center-clinic-icon-isolated-on-white-background.jpg?ver=6" alt="hospital image" width="200px" style="border-radius:50%;">
 
+                <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    
+<div class="container">
+  <main>
+    <div class="py-2 text-center">
+
+      <h2>Doctors Timing Data</h2>
 
     </div>
-   
 
+    <div class="row g-5">
+      
+      <div class="col-md-7 col-lg-8" style="border:1px solid white;background-color:blue; margin-left:200px;height:465px;box-shadow:10px 10px 0px 0px black;">
+        <h3 class="mt-3" style="text-align:center;color:white;">Welcome</h3>
+<div class="col-sm-6" style="margin-left:170px;">
+    <img src="https://img.freepik.com/free-photo/portrait-smiling-young-woman-doctor-healthcare-medical-worker-pointing-fingers-left-showing-clini_1258-88433.jpg" alt="doctor" width="350px">
 
 </div>
 
-                       
+
+        <form action="#" method="POST" class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6 mt-5">
+              <label for="firstName" class="form-label text-light">Monday-Friday</label>
+              <input type="text" class="form-control" name="montofri" id="firstName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6 mt-5">
+              <label for="lastName" class="form-label text-light">Saturday-Sunday</label>
+              <input type="text" class="form-control" name="sattosun" id="lastName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+        
+          
+
+
+
+
+
+
+
+
+
+            
+            
+
+          
+
+            
+  </div>
+
+    <button class="btn btn-primary btn-lg float-right mt-2" style="box-shadow:10px 10px 0px 0px black;" name="submit" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+ 
+</div>
+
                             
                           
- <table border="1px" width="70%">
-<tr>
-
-
-<th>Serial No</th>
-<th>Fill Data</th>
-<th>Fetch Data</th>
-
-
-</tr>
-
-
-
-<tr>
-
-
-<td>1</td>
-<td><a href="sliderform.php"><button class="good">Create New</button></a></td>
-<td><a href="sliderfetch.php"><button class="good">Fetch Data</button></a></td>
-</tr>
-
-
-
-                        </table>           
+                                   
 
 
 
@@ -533,6 +656,29 @@ box-shadow:10px 10px 0px 0px black;
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
 
+    <!-- bootstrap -->
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="checkout.js"></script>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
+
+
+<?php
+if(isset($_POST["submit"])){
+    $connection=mysqli_connect("localhost","root","","mediplus");
+    $montofri=$_POST["montofri"];
+    $sattosun=$_POST["sattosun"];
+    $query="INSERT INTO `openinghours`(`id`, `montofri`, `sattosun`) VALUES (NULL,'$montofri','$sattosun')";
+mysqli_query($connection,$query);
+
+echo "<script>window.location.href='openingfetch.php';</script>";
+
+
+
+}
+
+
+?>

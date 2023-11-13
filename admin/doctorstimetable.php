@@ -23,7 +23,8 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-<style>
+
+    <style>
 
 th{
     text-align:center;
@@ -64,7 +65,6 @@ box-shadow:10px 10px 0px 0px black;
 
 }
 </style>
-
     
      
     
@@ -423,7 +423,10 @@ box-shadow:10px 10px 0px 0px black;
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-<div class="container" style="text-align:center;">
+
+
+                       
+                <div class="container" style="text-align:center;">
     <div class="box">
 
 <img src="https://us.123rf.com/450wm/jasmin64/jasmin642211/jasmin64221100275/194879060-hospital-medical-center-clinic-icon-isolated-on-white-background.jpg?ver=6" alt="hospital image" width="200px" style="border-radius:50%;">
@@ -435,11 +438,11 @@ box-shadow:10px 10px 0px 0px black;
 
 </div>
 
-                       
+
                             
-                          
- <table border="1px" width="70%">
-<tr>
+                                              
+                <table border="1px" width="70%">
+                            <tr>
 
 
 <th>Serial No</th>
@@ -447,7 +450,7 @@ box-shadow:10px 10px 0px 0px black;
 <th>Fetch Data</th>
 
 
-</tr>
+                            </tr>
 
 
 
@@ -455,13 +458,14 @@ box-shadow:10px 10px 0px 0px black;
 
 
 <td>1</td>
-<td><a href="sliderform.php"><button class="good">Create New</button></a></td>
-<td><a href="sliderfetch.php"><button class="good">Fetch Data</button></a></td>
+<td><a href="doctorform.php"><button class="good">Create New</button></a></td>
+<td><a href="doctorfetch.php"><button class="good">Fetch Data</button></a></td>
 </tr>
 
 
 
-                        </table>           
+                        </table>      
+                                   
 
 
 

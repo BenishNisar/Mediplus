@@ -22,51 +22,41 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-<style>
-
-th{
-    text-align:center;
-    background-color:red;
-    color:white;
-}
-
-
-
-td{
-    text-align:center;
-}
-table{
-    background-color:blue;
-    border:1px solid white;
-    height:180px;
-    margin-left:180px;
-    margin-top:10px;
-    color:white;
-}
-
-
-.good{
-height:40px;
-width:140px;
-border:1px solid white;
-background-color:blue;
-color:white;
-font-family:bold;
-border-radius:10%;
-box-shadow:10px 10px 0px 0px black;
-
-}
-.good:hover{
-    background-color:skyblue;
-    color:white;
-    
-
-}
-</style>
-
     
      
+
+
+    <style>
+th{
+    font-family:bold;
+    color:skyblue;
+    background-color:black;
+    text-align:center;
+}
+
+.good{
+   background-color:skyblue;
+ font-family:bold; 
+  
+}
+.good:hover{
+    background-color:pink;
+    font-size:15px;
+}
+table{
+    margin-left:200px;
+    box-shadow:10px 10px 1px 1px black;
+    text-align:center;
+}
+table:hover{
+    box-shadow:10px 10px 1px 1px blue;
+}
+
+
+
+    </style>
+
+
     
 
 </head>
@@ -80,7 +70,7 @@ box-shadow:10px 10px 0px 0px black;
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon ">
                 <img src="https://toppng.com//public/uploads/preview/health-plan-icon-hospital-icon-blue-11553476430fckf2owtwt.png" width="45px" style="border-radius: 60%;">
                 </div>
@@ -423,45 +413,50 @@ box-shadow:10px 10px 0px 0px black;
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-<div class="container" style="text-align:center;">
-    <div class="box">
 
-<img src="https://us.123rf.com/450wm/jasmin64/jasmin642211/jasmin64221100275/194879060-hospital-medical-center-clinic-icon-isolated-on-white-background.jpg?ver=6" alt="hospital image" width="200px" style="border-radius:50%;">
-
-
-    </div>
-   
-
+<div class="box" style="text-align:center;">
+    <a href="openingform.php"><button>Create new</button></a>
 
 </div>
-
                        
-                            
+                <table border="1px" width="60%">
+                    <tr>
+                        <th>id</th>
+                        <th>Monday to Friday</th>
+                        <th>Saturday to Sunday</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+<?php
+$connection=mysqli_connect("localhost","root","","mediplus");
+$query="SELECT * FROM `openinghours`";
+$response=mysqli_query($connection,$query);
+if(mysqli_num_rows($response)){
+    while($data=mysqli_fetch_array($response)){
+
+ ?>
+
+<tr>
+    <td><?php echo $data[0]; ?></td>
+    <td><?php echo $data[1]; ?></td>
+    <td><?php echo $data[2]; ?></td>
+    <td><a href="openingedit.php?id=<?php echo $data[0]; ?>"><button class="good">Edit Data</button></a></td>
+    <td><a href="openingdelete.php?id=<?php echo $data[0]; ?>"><button class="good">Delete</button></a></td>
+</tr>
+<?php
+}
+}
+
+
+?>
+
+
+
+                </table>            
                           
- <table border="1px" width="70%">
-<tr>
+                                   
 
 
-<th>Serial No</th>
-<th>Fill Data</th>
-<th>Fetch Data</th>
-
-
-</tr>
-
-
-
-<tr>
-
-
-<td>1</td>
-<td><a href="sliderform.php"><button class="good">Create New</button></a></td>
-<td><a href="sliderfetch.php"><button class="good">Fetch Data</button></a></td>
-</tr>
-
-
-
-                        </table>           
 
 
 
