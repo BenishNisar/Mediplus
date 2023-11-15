@@ -1,3 +1,8 @@
+<?php
+$id=$_GET["id"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -517,7 +522,19 @@
       </ul>
     </div>
 
-    
+
+<?php
+
+$connection=mysqli_connect("localhost","root","","mediplus");
+$query="SELECT * FROM `appointement` WHERE `id`=$id";
+$result=mysqli_query($connection,$query);
+$data=mysqli_fetch_array($result);
+
+
+?>
+
+
+
 <div class="container">
   <main>
     <div class="py-2 text-center">
@@ -537,56 +554,74 @@
         <form action="#" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
           <div class="row g-3">
             <div class="col-sm-6">
-              <label for="firstName" class="form-label">Title</label>
-              <input type="text" class="form-control" name="title" id="firstName" placeholder="" value="" required>
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" value="<?php echo $data[1]; ?>" id="email" placeholder=""  required>
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
             </div>
 
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Sub Title</label>
-              <input type="text" class="form-control" name="subtitle" id="lastName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </div>
 
-        
-
-
-<div class="col-12">
-<div class="form-group mt-2">
-<label class="text-dark" for="">Description</label>
-<textarea name="description"  class="form-control" rows="5"></textarea>
-    
-    </div>
-    </div>
-
-
-
-
-<!-- button -->
-<div class="col-12">
-              <label for="address" class="form-label">Button</label>
-              <input type="text" class="form-control" name="button" placeholder="" required>
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
             <!-- button -->
 
-            <div class="col-12 mt-5">
-        <label for="" class="form-label">Slider_Image</label>
-<input type="file" name="sliderimage" id="">
+            <div class="col-sm-6">
+              <label for="phone" class="form-label">Phone</label>
+              <input type="phone" class="form-control" name="phone" value="<?php echo $data[2]; ?>" id="phone" placeholder=""  required>
               <div class="invalid-feedback">
-                Please enter your shipping address.
+                Valid first name is required.
               </div>
             </div>
 
             
 
+
+            <div class="col-sm-6">
+              <label for="text" class="form-label">Department</label>
+              <input type="text" class="form-control" name="department" value="<?php echo $data[3]; ?>" id="text" placeholder=""  required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
           
+
+
+
+            <div class="col-sm-6">
+              <label for="doctor" class="form-label">Doctor</label>
+              <input type="text" class="form-control" name="doctor" value="<?php echo $data[4]; ?>" id="text" placeholder=""  required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+
+            <div class="col-sm-12">
+              <label for="text" class="form-label">Date</label>
+              <input type="date" class="form-control" name="date" value="<?php echo $data[5]; ?>" id="text" placeholder=""  required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+<div class="form-group mt-2">
+<label class="text-dark" for="">Message</label>
+<textarea name="message" value="<?php echo $data[6]; ?>"  class="form-control" rows="5"></textarea>
+    
+    </div>
+    </div>
+
+
+    <div class="col-sm-6">
+              <label for="user" class="form-label">User</label>
+              <input type="text" class="form-control" name="user" value="<?php echo $data[7]; ?>" id="text" placeholder=""  required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+
 
             
   </div>
@@ -626,9 +661,8 @@
   </footer>
 </div>
 
-                            
-                          
-                                   
+  
+
 
 
 
@@ -712,25 +746,22 @@
 
 <?php
 if(isset($_POST["submit"])){
-   error_reporting(0);
+    
     $connection=mysqli_connect("localhost","root","","mediplus");
-    $title=$_POST["title"];
-    $subtitle=$_POST["subtitle"];
-    $description=$_POST["description"];
-    $button=$_POST["button"];
-   
-    $sliderimage=$_FILES['sliderimage']['name'];
-    $tmp_name=$_FILES['sliderimage']['tmp_name'];
-    $path="./doctors/".$sliderimage;
-    move_uploaded_file($tmp_name,$path);
-    $query="INSERT INTO `slider`(`id`, `title`, `subtitle`, `description`, `button`, `image`) VALUES (NULL,'$title','$subtitle','$description','$button','$sliderimage')";
-
-mysqli_query($connection,$query);
-
-echo "<script>window.location.href='sliderfetch.php';</script>";
+    $email=$_POST["email"];
+    $phone=$_POST["phone"];
+    $department=$_POST["department"];
+    $doctor=$_POST["doctor"];
+    $date=$_POST["date"];
+    $message=$_POST["message"];
+    $user=$_POST["user"];
 
 
+    $update="UPDATE `appointement` SET `email`='$email',`phone`='$phone',`department`='$department',`doctor`='$doctor',`date`='$date',`message`='$message',`user`='$user' WHERE `id`=$id";
+    mysqli_query($connection,$update);
+    echo "<script>window.location.href='appoinmentfetch.php';</script>";
 }
+
 
 
 ?>

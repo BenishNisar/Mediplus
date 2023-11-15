@@ -1,3 +1,8 @@
+<?php
+$id=$_GET["id"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -517,73 +522,62 @@
       </ul>
     </div>
 
+
+<?php
+
+$connection=mysqli_connect("localhost","root","","mediplus");
+$query="SELECT * FROM `newsletter` WHERE `id`=$id";
+$result=mysqli_query($connection,$query);
+$data=mysqli_fetch_array($result);
+
+
+?>
+
+
+
     
 <div class="container">
   <main>
     <div class="py-2 text-center">
-      <img class="d-block mx-auto mb-4" src="https://us.123rf.com/450wm/jasmin64/jasmin642211/jasmin64221100275/194879060-hospital-medical-center-clinic-icon-isolated-on-white-background.jpg?ver=" alt="" width="200px" height="190px" style="border-radius:50%;">
-      <h2>Checkout form</h2>
+
+      <h2>Doctors Timing Data</h2>
 
     </div>
 
     <div class="row g-5">
-      <div class="col-md-5 col-lg-4 order-md-last">
-        
-       <img src="https://images.healthshots.com/healthshots/en/uploads/2022/07/02195043/doctor-stress.jpg" alt="doctor" width="330px" height="310px" style="margin-top:120px;bo">
-        
-      </div>
-      <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3">Welcome</h4>
-        <form action="#" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="firstName" class="form-label">Title</label>
-              <input type="text" class="form-control" name="title" id="firstName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
-            </div>
+      
+      <div class="col-md-7 col-lg-8" style="border:1px solid white;background-color:;border-radius:6%;border:5px solid blue; margin-left:200px;height:465px;box-shadow:10px 10px 0px 0px black;">
+        <h3 class="mt-3" style="text-align:center;color:black;">Welcome</h3>
+<div class="col-sm-6" style="margin-left:170px;">
+    <img src="https://img.freepik.com/free-photo/portrait-smiling-young-woman-doctor-healthcare-medical-worker-pointing-fingers-left-showing-clini_1258-88433.jpg" alt="doctor" width="350px">
 
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Sub Title</label>
-              <input type="text" class="form-control" name="subtitle" id="lastName" placeholder="" value="" required>
+</div>
+
+
+        <form action="#" method="POST" class="needs-validation" novalidate>
+          <div class="row g-3">
+          
+
+            <div class="col-sm-12 mt-5 text-center">
+              <label for="lastName" class="form-label text-dark" >Email</label>
+              <input type="email" class="form-control" name="email" value="<?php echo $data[1];   ?>" id="email" placeholder="valied email required" value="" required>
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
             </div>
 
         
-
-
-<div class="col-12">
-<div class="form-group mt-2">
-<label class="text-dark" for="">Description</label>
-<textarea name="description"  class="form-control" rows="5"></textarea>
-    
-    </div>
-    </div>
+          
 
 
 
 
-<!-- button -->
-<div class="col-12">
-              <label for="address" class="form-label">Button</label>
-              <input type="text" class="form-control" name="button" placeholder="" required>
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-            <!-- button -->
 
-            <div class="col-12 mt-5">
-        <label for="" class="form-label">Slider_Image</label>
-<input type="file" name="sliderimage" id="">
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
 
+
+
+
+            
             
 
           
@@ -591,41 +585,14 @@
             
   </div>
 
-          <hr class="my-4">
-
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="same-address">
-            <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
-          </div>
-
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="save-info">
-            <label class="form-check-label" for="save-info">Save this information for next time</label>
-          </div>
-
-          <hr class="my-4">
-
-        
-          
-
-          
-
-          <button class=" btn btn-primary btn-lg float-right" name="submit" type="submit">Submit</button>
+    <button class="btn btn-primary btn-lg float-right mt-2" style="box-shadow:10px 10px 0px 0px black;" name="submit" type="submit">Submit</button>
         </form>
       </div>
     </div>
   </main>
 
-  <footer class="my-5 pt-5 text-body-secondary text-center text-small">
-    <p class="mb-1">&copy; 2017–2023 Company Name</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul>
-  </footer>
+ 
 </div>
-
                             
                           
                                    
@@ -712,25 +679,13 @@
 
 <?php
 if(isset($_POST["submit"])){
-   error_reporting(0);
-    $connection=mysqli_connect("localhost","root","","mediplus");
-    $title=$_POST["title"];
-    $subtitle=$_POST["subtitle"];
-    $description=$_POST["description"];
-    $button=$_POST["button"];
+    $email=$_POST['email'];
    
-    $sliderimage=$_FILES['sliderimage']['name'];
-    $tmp_name=$_FILES['sliderimage']['tmp_name'];
-    $path="./doctors/".$sliderimage;
-    move_uploaded_file($tmp_name,$path);
-    $query="INSERT INTO `slider`(`id`, `title`, `subtitle`, `description`, `button`, `image`) VALUES (NULL,'$title','$subtitle','$description','$button','$sliderimage')";
-
-mysqli_query($connection,$query);
-
-echo "<script>window.location.href='sliderfetch.php';</script>";
-
-
+$update="UPDATE `newsletter` SET `email`='$email' WHERE `id`=$id";
+    mysqli_query($connection,$update);
+    echo "<script>window.location.href='newsfetch.php';</script>";
 }
+
 
 
 ?>

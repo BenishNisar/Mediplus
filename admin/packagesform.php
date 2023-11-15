@@ -712,22 +712,17 @@
 
 <?php
 if(isset($_POST["submit"])){
-   error_reporting(0);
-    $connection=mysqli_connect("localhost","root","","mediplus");
+  
     $title=$_POST["title"];
-    $subtitle=$_POST["subtitle"];
-    $description=$_POST["description"];
-    $button=$_POST["button"];
-   
-    $sliderimage=$_FILES['sliderimage']['name'];
-    $tmp_name=$_FILES['sliderimage']['tmp_name'];
-    $path="./doctors/".$sliderimage;
-    move_uploaded_file($tmp_name,$path);
-    $query="INSERT INTO `slider`(`id`, `title`, `subtitle`, `description`, `button`, `image`) VALUES (NULL,'$title','$subtitle','$description','$button','$sliderimage')";
+    $PictureName=$_FILES["pic"]["name"];
+    $PictureTmp=$_FILES["pic"]["tmp_name"];
+   $path="./doctors/".$PictureName;
+    move_uploaded_file($PictureTmp,$path);
+    $connection=mysqli_connect("localhost","root","","mediplus");
+    $query="";
 
 mysqli_query($connection,$query);
 
-echo "<script>window.location.href='sliderfetch.php';</script>";
 
 
 }

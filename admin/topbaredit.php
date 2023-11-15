@@ -1,3 +1,8 @@
+<?php
+$id=$_GET["id"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -517,7 +522,20 @@
       </ul>
     </div>
 
-    
+
+<?php
+
+$connection=mysqli_connect("localhost","root","","mediplus");
+$query="SELECT * FROM `topbar` WHERE `id`=$id";
+$result=mysqli_query($connection,$query);
+$data=mysqli_fetch_array($result);
+
+
+?>
+
+
+
+          
 <div class="container">
   <main>
     <div class="py-2 text-center">
@@ -534,19 +552,19 @@
       </div>
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Welcome</h4>
-        <form action="#" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <form action="#" method="POST"  class="needs-validation" novalidate>
           <div class="row g-3">
             <div class="col-sm-6">
-              <label for="firstName" class="form-label">Title</label>
-              <input type="text" class="form-control" name="title" id="firstName" placeholder="" value="" required>
+              <label for="firstName" class="form-label">Phone</label>
+              <input type="text" class="form-control" name="phone" value="<?php echo $data[1]; ?>" id="firstName" placeholder="" value="" required>
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
             </div>
 
             <div class="col-sm-6">
-              <label for="lastName" class="form-label">Sub Title</label>
-              <input type="text" class="form-control" name="subtitle" id="lastName" placeholder="" value="" required>
+              <label for="lastName" class="form-label">email</label>
+              <input type="email" class="form-control" name="email" value="<?php echo $data[2]; ?>"  id="email" placeholder="" value="" required>
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
@@ -557,8 +575,8 @@
 
 <div class="col-12">
 <div class="form-group mt-2">
-<label class="text-dark" for="">Description</label>
-<textarea name="description"  class="form-control" rows="5"></textarea>
+<label class="text-dark" for="">Address</label>
+<textarea name="address" value="<?php echo $data[3]; ?>"   class="form-control" rows="3"></textarea>
     
     </div>
     </div>
@@ -566,23 +584,8 @@
 
 
 
-<!-- button -->
-<div class="col-12">
-              <label for="address" class="form-label">Button</label>
-              <input type="text" class="form-control" name="button" placeholder="" required>
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-            <!-- button -->
 
-            <div class="col-12 mt-5">
-        <label for="" class="form-label">Slider_Image</label>
-<input type="file" name="sliderimage" id="">
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
+
 
             
 
@@ -616,17 +619,9 @@
     </div>
   </main>
 
-  <footer class="my-5 pt-5 text-body-secondary text-center text-small">
-    <p class="mb-1">&copy; 2017–2023 Company Name</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul>
-  </footer>
 </div>
 
-                            
+                                  
                           
                                    
 
@@ -712,25 +707,15 @@
 
 <?php
 if(isset($_POST["submit"])){
-   error_reporting(0);
-    $connection=mysqli_connect("localhost","root","","mediplus");
-    $title=$_POST["title"];
-    $subtitle=$_POST["subtitle"];
-    $description=$_POST["description"];
-    $button=$_POST["button"];
+    $phone=$_POST["phone"];
+    $email=$_POST["email"];
+    $address=$_POST["address"];
    
-    $sliderimage=$_FILES['sliderimage']['name'];
-    $tmp_name=$_FILES['sliderimage']['tmp_name'];
-    $path="./doctors/".$sliderimage;
-    move_uploaded_file($tmp_name,$path);
-    $query="INSERT INTO `slider`(`id`, `title`, `subtitle`, `description`, `button`, `image`) VALUES (NULL,'$title','$subtitle','$description','$button','$sliderimage')";
-
-mysqli_query($connection,$query);
-
-echo "<script>window.location.href='sliderfetch.php';</script>";
-
-
+$update="UPDATE `topbar` SET `phone`='$phone',`email`='$email',`address`='$address' WHERE `id`=$id";
+    mysqli_query($connection,$update);
+    echo "<script>window.location.href='topbarfetch.php';</script>";
 }
+
 
 
 ?>
