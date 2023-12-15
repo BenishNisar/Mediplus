@@ -536,6 +536,17 @@
         <h4 class="mb-3">Welcome</h4>
         <form action="#" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
           <div class="row g-3">
+
+          <div class="col-sm-6">
+              <label for="text" class="form-label">Name</label>
+              <input type="text" class="form-control" name="uname" id="text" placeholder=""  required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+
+
             <div class="col-sm-6">
               <label for="email" class="form-label">Email</label>
               <input type="email" class="form-control" name="email" id="email" placeholder=""  required>
@@ -549,7 +560,19 @@
 
             <div class="col-sm-6">
               <label for="phone" class="form-label">Phone</label>
-              <input type="phone" class="form-control" name="phone" id="phone" placeholder=""  required>
+              <input type="text" class="form-control" name="phone" id="phone" placeholder=""  required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+
+
+
+
+            <div class="col-sm-6">
+              <label for="phone" class="form-label">Subject</label>
+              <input type="text" class="form-control" name="subject" id="text" placeholder=""  required>
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
@@ -557,35 +580,8 @@
 
             
 
-
-            <div class="col-sm-6">
-              <label for="text" class="form-label">Department</label>
-              <input type="text" class="form-control" name="department" id="text" placeholder=""  required>
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
-            </div>
-
           
 
-
-
-            <div class="col-sm-6">
-              <label for="doctor" class="form-label">Doctor</label>
-              <input type="text" class="form-control" name="doctor" id="text" placeholder=""  required>
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
-            </div>
-
-
-            <div class="col-sm-12">
-              <label for="text" class="form-label">Date</label>
-              <input type="date" class="form-control" name="date" id="text" placeholder=""  required>
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
-            </div>
 
             <div class="col-sm-12">
 <div class="form-group mt-2">
@@ -596,18 +592,7 @@
     </div>
 
 
-    <div class="col-sm-6">
-              <label for="user" class="form-label">User</label>
-              <input type="text" class="form-control" name="user" id="text" placeholder=""  required>
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
-            </div>
-
-
-
-            
-  </div>
+    
 
           <hr class="my-4">
 
@@ -731,22 +716,21 @@
 <?php
 if(isset($_POST["submit"])){
     $connection=mysqli_connect("localhost","root","","mediplus");
+        $uname=$_POST["uname"];
     $email=$_POST["email"];
     $phone=$_POST["phone"];
-    $department=$_POST["department"];
-    $doctor=$_POST["doctor"];
-    $date=$_POST["date"];
-    $message=$_POST["message"];
-    $user=$_POST["user"];
-   $query="INSERT INTO `appointement`(`id`, `email`, `phone`, `department`, `doctor`, `date`, `message`, `user`) VALUES (NULL,'$email','$phone','$department','$doctor','$date','$message','$user')";
+    $subject=$_POST["subject"];
+   $message=$_POST["message"];
+ 
+$query="INSERT INTO `contact`(`id`, `name`, `email`, `phone`, `subject`, `message`) VALUES (NULL,'$uname','$email','$phone','$subject','$message')";
 
 
 mysqli_query($connection,$query);
 
-echo "<script>window.location.href='appoinmentfetch.php';</script>";
+echo "<script>window.location.href='contactfetch.php';</script>";
 
 
 }
 
 
-?>
+?>         

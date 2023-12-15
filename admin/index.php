@@ -378,8 +378,15 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
+                <?php
+                    $connect = mysqli_connect("localhost", "root", "", "mediplus");
+                    $select = "SELECT * FROM `openinghours`";
+                    $query = mysqli_query($connect, $select);
+                    $rowcount = mysqli_num_rows($query);
+                    ?>
                 <!-- Begin Page Content -->
+                <h1><a href="openingform.php"></a></h1>
+                <h2><?php echo $rowcount ?></h2>
 
 
                        
